@@ -4,29 +4,18 @@ namespace TextAdventureClases.Creatures
 {
     public class Creature
     {
-        public string Name { get; set; }
-        public int Health { get; set; }
-        public int Level { get; set; }
-        public int Strength { get; set; }
-        public int Defense { get; set; }
+        public string Name { get; private set; } = "Unknown Creature";
+        public int Health { get; private set; } = 100;
+        public int Level { get; private set; } = 1;
+        public int Strength { get; private set; } = 1;
+        public int Defense { get; private set; } = 1;
 
         #region Creature Constructors
-        public Creature()
-        {
-            Name = "Unknown Creature";
-            Health = 100;
-            Level = 1;
-            Strength = 1;
-            Defense = 1;
-        }
+        public Creature() { }
 
         public Creature(string name)
         {
             Name = name;
-            Health = 100;
-            Level = 1;
-            Strength = 1;
-            Defense = 1;
         }
 
         public Creature(string name, int health, int level, int strength, int defense)

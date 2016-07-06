@@ -7,6 +7,44 @@ namespace UnitTest.Classes.Creatures
     public class CreatureTests
     {
         [TestMethod]
+        public void HasDefaults()
+        {
+            var creature = new Creature();
+            Assert.AreEqual(creature.Name, "Unknown Creature");
+            Assert.AreEqual(creature.Health, 100);
+            Assert.AreEqual(creature.Level, 1);
+            Assert.AreEqual(creature.Strength, 1);
+            Assert.AreEqual(creature.Defense, 1);
+        }
+
+        [TestMethod]
+        public void CanHaveAName()
+        {
+            string creatureName = "Creature Name";
+            var creature = new Creature(creatureName);
+
+            Assert.AreEqual(creature.Name, creatureName);
+        }
+
+        [TestMethod]
+        public void CanHaveCustomValues()
+        {
+            string creatureName = "Creature Name";
+            int creatureHealth = 200;
+            int creatureLevel = 50;
+            int creatureStrength = 25;
+            int creatureDefense = 25;
+
+            var creature = new Creature(creatureName, creatureHealth, creatureLevel, creatureStrength, creatureDefense);
+
+            Assert.AreEqual(creature.Name, creatureName);
+            Assert.AreEqual(creature.Health, creatureHealth);
+            Assert.AreEqual(creature.Level, creatureLevel);
+            Assert.AreEqual(creature.Strength, creatureStrength);
+            Assert.AreEqual(creature.Defense, creatureDefense);
+        }
+
+        [TestMethod]
         public void CanTakeDamage()
         {
             var creature = new Creature();
