@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TextAdventureClases.Creatures;
 
 namespace UnitTest.Classes.Creatures
@@ -41,6 +40,16 @@ namespace UnitTest.Classes.Creatures
         }
 
         [TestMethod]
+        public void CanGainAStrength()
+        {
+            var creature = new Creature();
+            int startStrength = creature.Strength;
+            int afterStrength = creature.GainStrength();
+
+            Assert.IsTrue((afterStrength - startStrength) == 1, "Strength increased by 1");
+        }
+
+        [TestMethod]
         public void CanGainStrength()
         {
             var creature = new Creature();
@@ -50,6 +59,16 @@ namespace UnitTest.Classes.Creatures
 
             Assert.IsTrue(afterStrength > startStrength, "Strength increased");
             Assert.IsTrue((afterStrength - startStrength) == newStrength);
+        }
+
+        [TestMethod]
+        public void CanGainADefense()
+        {
+            var creature = new Creature();
+            int startDefense = creature.Defense;
+            int afterDefense = creature.GainDefense();
+
+            Assert.IsTrue((afterDefense - startDefense) == 1, "Strength increased by 1");
         }
 
         [TestMethod]
