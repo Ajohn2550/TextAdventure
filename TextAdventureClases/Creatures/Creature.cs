@@ -58,7 +58,18 @@ namespace TextAdventureClases.Creatures
         }
         #endregion
         #region Strength Methods
-
+        public int GainStrength(int newStrength)
+        {
+            Strength = Strength + newStrength;
+            return Strength;
+        }
+        #endregion
+        #region Defense Methods
+        public int GainDefense(int newDefense)
+        {
+            Defense = Defense + newDefense;
+            return Defense;
+        }
         #endregion
     }
 }

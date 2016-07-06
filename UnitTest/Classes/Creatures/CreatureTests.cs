@@ -15,7 +15,7 @@ namespace UnitTest.Classes.Creatures
             int startHealth = creature.Health;
             creature.TakeDamage(damage);
 
-            Assert.IsTrue(creature.Health == startHealth - damage, "Dmage Taken");
+            Assert.IsTrue(creature.Health == (startHealth - damage), "Dmage Taken");
         }
 
         [TestMethod]
@@ -27,6 +27,41 @@ namespace UnitTest.Classes.Creatures
 
             Assert.IsTrue(healed > 0, "Healed more than 0 hp.");
             Assert.IsTrue(creature.Health > startHealth, "Health Increased");
+        }
+
+        [TestMethod]
+        public void CanLevelUp()
+        {
+            var creature = new Creature();
+            int startLevel = creature.Level;
+            int newLevel = creature.LevelUp();
+
+            Assert.IsTrue(newLevel > startLevel, "Level increased");
+            Assert.IsTrue((newLevel - startLevel) == 1);
+        }
+
+        [TestMethod]
+        public void CanGainStrength()
+        {
+            var creature = new Creature();
+            int startStrength = creature.Strength;
+            int newStrength = 2;
+            int afterStrength = creature.GainStrength(newStrength);
+
+            Assert.IsTrue(afterStrength > startStrength, "Strength increased");
+            Assert.IsTrue((afterStrength - startStrength) == newStrength);
+        }
+
+        [TestMethod]
+        public void CanGainDefense()
+        {
+            var creature = new Creature();
+            int startDefense = creature.Defense;
+            int newDefense = 2;
+            int afterDefense = creature.GainDefense(newDefense);
+
+            Assert.IsTrue(afterDefense > startDefense, "Defense increased");
+            Assert.IsTrue((afterDefense - startDefense) == newDefense);
         }
     }
 }
