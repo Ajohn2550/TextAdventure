@@ -24,6 +24,7 @@ namespace TextAdventureClases.Creatures
         {
             Name = name;
             Health = health;
+            maxHealth = health;
             Level = level;
             Strength = strength;
             Defense = defense;
