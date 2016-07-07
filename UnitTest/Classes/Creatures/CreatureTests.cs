@@ -56,14 +56,32 @@ namespace UnitTest.Classes.Creatures
         }
 
         [TestMethod]
+        public void CanGainHp()
+        {
+            var creature = new Creature();
+
+            Assert.IsTrue(creature.GainHealthPoints(10) > 10, "Gained Health");
+        }
+
+        [TestMethod]
         public void CanHeal()
         {
             var creature = new Creature();
             int startHealth = creature.Health;
+            creature.GainHealthPoints(10);
             int healed = creature.Heal(1, 10);
 
             Assert.IsTrue(healed > 0, "Healed more than 0 hp.");
             Assert.IsTrue(creature.Health > startHealth, "Health Increased");
+        }
+        [TestMethod]
+        public void HasMaxHealth()
+        {
+            var creature = new Creature();
+            int startHealnth = creature.Health;
+            int healed = creature.Heal(1000, 1001);
+
+            Assert.IsTrue(healed == 0, "Did not increase");
         }
 
         [TestMethod]

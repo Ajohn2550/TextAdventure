@@ -4,6 +4,8 @@ namespace TextAdventureClases.Creatures
 {
     public class Creature
     {
+        private int maxHealth = 100;
+
         public string Name { get; private set; } = "Unknown Creature";
         public int Health { get; private set; } = 100;
         public int Level { get; private set; } = 1;
@@ -33,11 +35,26 @@ namespace TextAdventureClases.Creatures
             Health = Health - damage;
         }
         
+        public int GainHealthPoints(int hp)
+        {
+            return maxHealth += hp;
+        }
+
         public int Heal(int min, int max)
         {
-            int healed = new Random().Next(min, max);
-            Health = Health + healed;
-            return healed;
+            int newHealth = new Random().Next(min, max) + Health;
+            int oldHealth = Health;
+
+            if (newHealth > maxHealth)
+            {
+                Health = maxHealth;
+                return maxHealth - oldHealth;
+            }
+            else
+            {
+                Health += newHealth;
+                return newHealth;
+            }
         }
         #endregion
         #region Level Methods
